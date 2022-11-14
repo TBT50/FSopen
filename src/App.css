@@ -30,7 +30,7 @@ ul {
   margin: 0;
 }
 
-.app-buttons {
+.feedback-buttons {
   display: flex;
 }
 
@@ -41,7 +41,7 @@ ul {
 .statistics-list {
   display: flex;
   justify-content: space-between;
-  max-width: 300px;
+  max-width: 80vw;
   margin: 0 auto;
 }
 
@@ -50,6 +50,7 @@ ul {
   flex-direction: column;
   font-size: 22px;
   font-weight: 700;
+  margin: 0 20px;
 }
 
 button {
