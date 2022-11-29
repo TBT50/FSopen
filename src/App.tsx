@@ -1,3 +1,4 @@
+import "./App.css";
 import { useState } from "react";
 import anecdotesList from "./anecdotes";
 
@@ -34,7 +35,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="content">
       <button type="button" onClick={nextAnecdote}>
         Next anecdote
       </button>
