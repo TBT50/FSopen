@@ -1,5 +1,7 @@
 import "./App.css";
 
+import { Note } from "./components/Note";
+
 const notes = [
   {
     id: 1,
@@ -28,7 +30,7 @@ function App() {
         <h1>NOTES</h1>
         <ul>
           {notes.map((note) => (
-            <li key={note.id}>{note.content}</li>
+            <Note key={note.id} {...note} />
           ))}
         </ul>
       </header>
