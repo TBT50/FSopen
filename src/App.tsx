@@ -9,7 +9,10 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header>
+        <h1>Courses</h1>
+      </header>
+      <main>
         {courses.map((course) => {
           return (
             <>
@@ -27,7 +30,7 @@ function App() {
             </>
           );
         })}
-      </header>
+      </main>
     </div>
   );
 }
