@@ -1,8 +1,8 @@
 import "./App.css";
-
+import { useState } from "react";
 import { Note } from "./components/Note";
 
-const notes = [
+const notesList = [
   {
     id: 1,
     content: "HTML is easy",
@@ -23,7 +23,26 @@ const notes = [
   },
 ];
 
-function App() {
+const App = () => {
+  const [notes, setNotes] = useState(notesList);
+  const [newNoteValue, setNewNoteValue] = useState("");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewNoteValue(event.target.value);
+  };
+
+  const handleAddNote = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const newNote = {
+      id: notes.length + 1,
+      content: newNoteValue,
+      date: new Date().toISOString(),
+      important: true,
+    };
+    setNotes([...notes, newNote]);
+    setNewNoteValue("");
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -33,9 +52,21 @@ function App() {
             <Note key={note.id} {...note} />
           ))}
         </ul>
+        <form onSubmit={handleAddNote}>
+          <div>
+            <label htmlFor="newNote">Add a new note</label>
+            <input
+              type="text"
+              id="newNote"
+              onChange={handleChange}
+              value={newNoteValue}
+            />
+          </div>
+          <button>SUBMIT</button>
+        </form>
       </header>
     </div>
   );
-}
+};
 
 export default App;
