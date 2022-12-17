@@ -37,7 +37,7 @@ const App = () => {
       id: notes.length + 1,
       content: newNoteValue,
       date: new Date().toISOString(),
-      important: true,
+      important: Math.random() < 0.5,
     };
     setNotes([...notes, newNote]);
     setNewNoteValue("");
