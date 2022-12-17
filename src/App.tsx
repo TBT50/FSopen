@@ -27,7 +27,7 @@ const App = () => {
   const [notes, setNotes] = useState(notesList);
   const [newNoteValue, setNewNoteValue] = useState("");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleNoteChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewNoteValue(event.target.value);
   };
 
@@ -58,7 +58,7 @@ const App = () => {
             <input
               type="text"
               id="newNote"
-              onChange={handleChange}
+              onChange={handleNoteChange}
               value={newNoteValue}
             />
           </div>
