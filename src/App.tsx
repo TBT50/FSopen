@@ -26,6 +26,7 @@ const notesList = [
 const App = () => {
   const [notes, setNotes] = useState(notesList);
   const [newNoteValue, setNewNoteValue] = useState("");
+  const [showAll, setShowAll] = useState(true);
 
   const handleNoteChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewNoteValue(event.target.value);
@@ -43,12 +44,19 @@ const App = () => {
     setNewNoteValue("");
   };
 
+  const notesToShow = showAll
+    ? notes
+    : notes.filter((note) => note.important === true);
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>NOTES</h1>
+        <button type="button" onClick={() => setShowAll(!showAll)}>
+          Show {showAll ? "IMPORTANT" : "ALL"} notes
+        </button>
         <ul>
-          {notes.map((note) => (
+          {notesToShow.map((note) => (
             <Note key={note.id} {...note} />
           ))}
         </ul>
