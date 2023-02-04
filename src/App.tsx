@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { InputField } from "./components/InputField";
-// import { PersonsList } from "./components/PersonsList";
+import { Persons } from "./components/Persons";
 
 function App() {
   const [persons, setPersons] = useState([
@@ -8,12 +8,18 @@ function App() {
     { name: "Ada Lovelace", number: "39-44-5323523", id: 2 },
     { name: "Dan Abramov", number: "12-43-234345", id: 3 },
     { name: "Mary Poppendieck", number: "39-23-6423122", id: 4 },
+    { name: "Piotr", number: "123", id: 5 },
   ]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
+  const [newFilter, setNewFilter] = useState("");
 
   const doesPersonExist = (name: string) => {
     return persons.some((person) => person.name === name);
+  };
+
+  const handleFilterElements = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewFilter(event.target.value);
   };
 
   const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,6 +50,7 @@ function App() {
 
   return (
     <div>
+      <input type="text" onChange={handleFilterElements} value={newFilter} />
       <h1>Phonebook</h1>
       <form onSubmit={handleAddPerson}>
         <InputField
@@ -59,13 +66,7 @@ function App() {
         <button>Add</button>
       </form>
       <h2>Numbers</h2>
-      <ul>
-        {persons.map((person) => (
-          <li key={person.id}>
-            {person.name} : {person.number}
-          </li>
-        ))}
-      </ul>
+      <Persons persons={persons} newFilter={newFilter} />
     </div>
   );
 }
